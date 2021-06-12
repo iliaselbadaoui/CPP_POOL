@@ -3,13 +3,16 @@
 
 int		main()
 {
-	ZombieEvent	z;
+	ZombieEvent	ze;
+	Zombie		*zombie;
 
 	srand(time(0));
-	z.setZombieType("Commander");
-	z.randomChump();
+	ze.setZombieType("Commander");
+	ze.randomChump();
 
-	z.setZombieType("Ruler");
-	z.randomChump();
+	ze.setZombieType("Ruler");
+	zombie = ze.newZombie("HYPER");
+	zombie->announce();
+	delete zombie;
 	return 0;
 }

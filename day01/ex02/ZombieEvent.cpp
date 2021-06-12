@@ -33,11 +33,11 @@ int		randomRange(int min, int max)
 
 void	ZombieEvent::randomChump(void)
 {
-	string names[] = {"Zoombie", "BIO", "XONE", "Zomblax", "UltraOne"};
+	string names[] = {"Zoombie", "BIO", "XONE", "Zomblax", "Ultra", "Goku"};
 
 	if (!type.empty())
 	{
-		Zombie *z = newZombie(names[randomRange(0, 5)]);
+		Zombie *z = newZombie(names[randomRange(0, 6)]);
 		z->announce();
 		delete z;
 	}
