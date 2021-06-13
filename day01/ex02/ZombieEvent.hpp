@@ -1,7 +1,6 @@
 #ifndef ZOMBIEEVENT_HPP
 # define ZOMBIEEVENT_HPP
 # include "Zombie.hpp"
-# include <unistd.h>
 class ZombieEvent
 {
 private:
