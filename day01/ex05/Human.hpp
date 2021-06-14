@@ -13,7 +13,7 @@ public:
 	Human();
 	~Human();
 	Brain *identify();
-	Brain getBrain();
+	Brain &getBrain();
 };
 
 #endif

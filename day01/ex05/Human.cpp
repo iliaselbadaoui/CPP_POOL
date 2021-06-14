@@ -20,7 +20,7 @@ Brain *Human::identify()
 	return brain.identify();
 }
 
-Brain Human::getBrain()
+Brain &Human::getBrain()
 {
 	return brain;
 }
