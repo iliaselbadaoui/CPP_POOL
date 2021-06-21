@@ -15,13 +15,5 @@ public:
 	void setRawBits( int const raw );
 };
 
-Fixed::Fixed()
-{
-}
-
-Fixed::~Fixed()
-{
-}
-
 
 #endif
