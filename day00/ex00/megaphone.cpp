@@ -8,14 +8,14 @@ int		main(int argc, char **argv)
 	else
 	{
 
-		for (int j = 0; argv[j]; j++)
+		for (int j = 1; argv[j]; j++)
 		{
 			for (int i=0; argv[j][i]; i++)
 			{
 				std::putchar(std::toupper(argv[j][i]));
 			}
-			std::cout << std::endl;
 		}
+		std::cout << std::endl;
 	}
 	return 0;
 }

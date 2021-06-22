@@ -10,5 +10,6 @@ $(Name):
 	@$(cpp) $(src) -o $(Name)
 clean:
 	@rm -rf $(Name)
+fclean:clean
 re: clean all
 .PHONY: all clean re
