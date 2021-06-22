@@ -1,6 +1,6 @@
 cpp = clang++ -Wall -Wextra -Werror
 
-Name = ex00
+Name = megaphone
 
 src = megaphone.cpp
 
