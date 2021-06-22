@@ -1,6 +1,6 @@
 cpp = clang++ -Wall -Wextra -Werror
 
-Name = ex00
+Name = megaphone
 
 src = megaphone.cpp
 
@@ -10,5 +10,6 @@ $(Name):
 	@$(cpp) $(src) -o $(Name)
 clean:
 	@rm -rf $(Name)
+fclean:clean
 re: clean all
 .PHONY: all clean re
