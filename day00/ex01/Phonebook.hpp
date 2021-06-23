@@ -5,7 +5,8 @@
 class Phonebook
 {
 private:
-	std::vector<Contact> book;
+	Contact book[8];
+	int index;
 public:
 	Phonebook();
 	~Phonebook();

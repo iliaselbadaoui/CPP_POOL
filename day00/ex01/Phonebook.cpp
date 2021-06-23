@@ -3,6 +3,7 @@
 
 Phonebook::Phonebook()
 {
+	index = -1;
 }
 
 Phonebook::~Phonebook()
@@ -13,51 +14,50 @@ Contact		read_contact()
 	Contact	c;
 	string	value;
 	std::cout << "What's your first name : ";
-	std::cin >> value;
+	std::getline(std::cin, value);
 	c.setFname(value);
 	std::cout << "What's your last name : ";
-	std::cin >> value;
+	std::getline(std::cin, value);
 	c.setLname(value);
 	std::cout << "What's your nickname : ";
-	std::cin >> value;
+	std::getline(std::cin, value);
 	c.setNname(value);
 	std::cout << "What's your login : ";
-	std::cin >> value;
+	std::getline(std::cin, value);
 	c.setLogin(value);
 	std::cout << "What's your address : ";
-	std::cin >> value;
+	std::getline(std::cin, value);
 	c.setAddress(value);
 	std::cout << "What's your email : ";
-	std::cin >> value;
+	std::getline(std::cin, value);
 	c.setEmail(value);
 	std::cout << "What's your birthday : ";
-	std::cin >> value;
+	std::getline(std::cin, value);
 	c.setBirth(value);
 	std::cout << "What's your phone : ";
-	std::cin >> value;
+	std::getline(std::cin, value);
 	c.setPhone(value);
 	std::cout << "What's your favorite meal : ";
-	std::cin >> value;
+	std::getline(std::cin, value);
 	c.setMeal(value);
 	std::cout << "What's your underwear color : ";
-	std::cin >> value;
+	std::getline(std::cin, value);
 	c.setUnderwear(value);
 	std::cout << "What's your darkest secret : ";
-	std::cin >> value;
+	std::getline(std::cin, value);
 	c.setSecret(value);
 
 	return c;
 }
 void Phonebook::Add(void)
 {
-	if (book.size() <= 7)
+	if (index < 7)
 	{
-		book.push_back(read_contact());
+		book[++index] = read_contact();
 	}
 	else
 	{
-		book.erase(book.begin());
-		book.push_back(read_contact());
+		std::cout << "The phonebook is full already, you can't add more contacts" << std::endl;
 	}
 }
 
@@ -104,39 +104,65 @@ void	printContact(int index, Contact c)
 	exactPrint(c.getNname());
 }
 
-void	printWanted(int i, std::vector<Contact> &book)
+void	printWanted(Contact book)
 {
-	Contact	wanted = book.at((std::size_t)(i - 1));
-	std::cout << "First Name : " << wanted.getFname() << std::endl;
-	std::cout << "Last Name : " << wanted.getLname() << std::endl;
-	std::cout << "Nickname : " << wanted.getNname() << std::endl;
-	std::cout << "Email : " << wanted.getEmail() << std::endl;
-	std::cout << "Address : " << wanted.getAddress() << std::endl;
-	std::cout << "Phone : " << wanted.getPhone() << std::endl;
-	std::cout << "Favorite meal : " << wanted.getMeal() << std::endl;
-	std::cout << "Login : " << wanted.getLogin() << std::endl;
-	std::cout << "Birthday : " << wanted.getBirth() << std::endl;
-	std::cout << "Underwear color: " << wanted.getUnderwear() << std::endl;
-	std::cout << "Darkest secret : " << wanted.getSecret() << std::endl;
+	std::cout << "First Name : " << book.getFname() << std::endl;
+	std::cout << "Last Name : " << book.getLname() << std::endl;
+	std::cout << "Nickname : " << book.getNname() << std::endl;
+	std::cout << "Email : " << book.getEmail() << std::endl;
+	std::cout << "Address : " << book.getAddress() << std::endl;
+	std::cout << "Phone : " << book.getPhone() << std::endl;
+	std::cout << "Favorite meal : " << book.getMeal() << std::endl;
+	std::cout << "Login : " << book.getLogin() << std::endl;
+	std::cout << "Birthday : " << book.getBirth() << std::endl;
+	std::cout << "Underwear color: " << book.getUnderwear() << std::endl;
+	std::cout << "Darkest secret : " << book.getSecret() << std::endl;
+}
+
+bool	isStrNumber(const char *c)
+{
+
+	while (*c)
+	{
+		if (*c > '9' || *c < '0')
+			return false;
+		c++;
+	}
+	return true;
 }
 
 void Phonebook::Search(void)
 {
 	string	str;
 	int		i;
+	if (index < 0)
+	{
+		std::cout << "There is no contacts in the phonebook for the moment." << std::endl;
+		return ;
+	}
 	std::cout << "index     |first name|last name |nickname  |" << std::endl;
-	for (size_t i = 0; i < book.size(); i++)
+	for (i = 0; i <= index; i++)
 	{
 		printContact(i, book[i]);
 		std::cout << std::endl;
 	}
 	std::cout << "Give the index of the element you're looking for : ";
-	std::cin >> str;
-	i = std::stoi(str);
-	if (!i || (std::size_t)i > book.size() + 1)
+	std::getline(std::cin, str);
+	if (!isStrNumber(str.c_str()))
 	{
-		std::cout << "the index must be a number and between 1 and 8";
+		std::cout << "The index '" << str << "' is not a number." << std::endl;
+		return ;	
+	}
+	i = std::atoi(str.c_str());
+	if (i >= 1 && i <= 8 && i > index + 1)
+	{
+		std::cout << "There is no cotact at index '" << i << "' ." << std::endl;
+		return ;
+	}	
+	if (i > index + 1 || i <= 0)
+	{
+		std::cout << "Out of range, the index must be between 1 && 8" << std::endl;
 		return ;
 	}
-	printWanted(i, book);
+	printWanted(book[i-1]);
 }

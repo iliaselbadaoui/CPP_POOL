@@ -6,7 +6,7 @@ int		main()
 	Phonebook	pb;
 	do
 	{
-		std::cin >> choice;
+		std::getline(std::cin, choice);
 		if (choice == "ADD")
 			pb.Add();
 		else if (choice == "SEARCH")
