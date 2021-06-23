@@ -1,30 +1,18 @@
-#include "Pony.hpp"
+#include "ZombieEvent.hpp"
 
-void ponyOnTheStack()
-{
-	Pony	poth;
-	poth.setVoice("HOOOOOOOOOOhohohoho!");
-	poth.setWingsLength(1.2);
-	poth.makeAVoice();
-	poth.fly();
-}
-
-void ponyOnTheHeap()
-{
-	Pony	*poth = new Pony();
-	poth->setVoice("HOOOOOOOOOOhohohoho!");
-	poth->setWingsLength(1.2);
-	poth->makeAVoice();
-	poth->fly();
-	delete poth;
-}
 
 int		main()
 {
-	while (1)
-	{
-		ponyOnTheStack();
-		ponyOnTheHeap();
-	}
-	return (0);
+	ZombieEvent	ze;
+	Zombie		*zombie;
+
+	srand(time(0));
+	ze.setZombieType("Commander");
+	ze.randomChump();
+
+	ze.setZombieType("Ruler");
+	zombie = ze.newZombie("HYPER");
+	zombie->announce();
+	delete zombie;
+	return 0;
 }
