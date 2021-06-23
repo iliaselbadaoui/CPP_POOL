@@ -1,17 +1,26 @@
 #include <iostream>
 #include <fstream>
 
-void	replace(std::string *line, std::string str, std::string substitute)
+std::string	replace(std::string line, std::string str, std::string substitute)
 {
 	size_t	pos;
+	std::string remain;
+	std::string res = "";
 	do
 	{
-		pos = line->find(str);
+		pos = line.find(str);
 		if (pos != std::string::npos)
-			line->replace(pos, str.length(), substitute);
+		{
+			remain = line.substr(pos + str.length());
+			line = line.substr(0, pos);
+			res += line + substitute;
+			std::cout << res << std::endl;
+			line = remain;
+		}
 	} while (pos != std::string::npos);
+	res +=  remain;
 	
-	
+	return res;
 }
 
 int	main(int argc, char **argv)
@@ -30,7 +39,7 @@ int	main(int argc, char **argv)
 	content = "";
 	while (std::getline(f, line))
 	{
-		replace(&line, std::string(argv[2]), std::string(argv[3]));
+		line = replace(line, std::string(argv[2]), std::string(argv[3]));
 		content += line;
 		content.push_back('\n');
 	}
