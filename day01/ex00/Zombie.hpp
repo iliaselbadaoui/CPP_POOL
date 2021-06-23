@@ -14,4 +14,7 @@ public:
 	void	setType(string value);
 	void	announce();
 };
+
+void	randomChump(void);
+Zombie	*newZombie(string name);
 #endif
