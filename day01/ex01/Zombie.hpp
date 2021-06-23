@@ -14,4 +14,5 @@ public:
 	void	setType(string value);
 	void	announce();
 };
+Zombie	*ZombieHorde(int n, string name);
 #endif
