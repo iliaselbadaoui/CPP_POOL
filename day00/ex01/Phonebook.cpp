@@ -140,6 +140,7 @@ void Phonebook::Search(void)
 		std::cout << "There is no contacts in the phonebook for the moment." << std::endl;
 		return ;
 	}
+	std::cout << std::setw(10);
 	std::cout << "index     |first name|last name |nickname  |" << std::endl;
 	for (i = 0; i <= index; i++)
 	{
