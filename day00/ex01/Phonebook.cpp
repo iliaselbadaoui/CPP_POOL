@@ -73,26 +73,10 @@ void	printSpaces(string	index)
 
 void	exactPrint(string str)
 {
-	std::ios init(NULL);
-    init.copyfmt(std::cout);
 	if (str.length() <= 10)
-	{
-		std::cout << str;
-		for (size_t i = 0; i < 10 - str.length(); i++)
-		{
-			std::cout << " ";
-		}
-		std::cout << "|";
-	}
+		std::cout << str << std::setw(10 - str.length() + 1) << "|";
 	else
-	{
-		for (size_t i = 0; i < 9; i++)
-		{
-			std::cout << str[i];
-		}
-		std::cout << ".|";
-	}
-	std::cout.copyfmt(init);
+		std::cout << str.substr(0, 9) << ".|";
 }
 
 void	printContact(int index, Contact c)
@@ -103,7 +87,6 @@ void	printContact(int index, Contact c)
 	exactPrint(c.getLname());
 	exactPrint(c.getNname());
 }
-
 void	printWanted(Contact book)
 {
 	std::cout << "First Name : " << book.getFname() << std::endl;
@@ -118,10 +101,14 @@ void	printWanted(Contact book)
 	std::cout << "Underwear color: " << book.getUnderwear() << std::endl;
 	std::cout << "Darkest secret : " << book.getSecret() << std::endl;
 }
-
 bool	isStrNumber(const char *c)
 {
 
+	if (*c == '-' || *c =='+')
+	{
+		c++;
+	}
+	
 	while (*c)
 	{
 		if (*c > '9' || *c < '0')
