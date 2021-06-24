@@ -14,7 +14,6 @@ std::string	replace(std::string line, std::string str, std::string substitute)
 			remain = line.substr(pos + str.length());
 			line = line.substr(0, pos);
 			res += line + substitute;
-			std::cout << res << std::endl;
 			line = remain;
 		}
 	} while (pos != std::string::npos);
