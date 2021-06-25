@@ -15,19 +15,23 @@ char firstChar(std::string str)
 
 void Karen::complain(std::string level)
 {
+    void (Karen::* debugPTR)(void) = &Karen::debug;
+    void (Karen::* warningPTR)(void) = &Karen::warning;
+    void (Karen::* infoPTR)(void) = &Karen::info;
+    void (Karen::* errorPTR)(void) = &Karen::error;
     switch (firstChar(level))
     {
     case 'D':
-        debug();
+        (this->*debugPTR)();
         break;
     case 'I':
-        info();
+        (this->*infoPTR)();
         break;
     case 'W':
-        warning();
+        (this->*warningPTR)();
         break;
     case 'E':
-        error();
+        (this->*errorPTR)();
         break;
     default:
         break;

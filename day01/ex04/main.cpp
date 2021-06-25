@@ -28,13 +28,13 @@ int	main(int argc, char **argv)
 	std::string content;
 	std::string line;
 	std::string fname = std::string(argv[1]) + std::string(".replace");
-	std::ofstream output(fname);
 	int		empty = 1;
+	int		match = 0;
 
 	if (input.fail())
 	{
 		std::cout << "NO SUCH FILE '"<< argv[1] << "'" << std::endl;
-		return 0;
+		return 1;
 	}
 	if (argc != 4)
 	{
@@ -46,15 +46,25 @@ int	main(int argc, char **argv)
 	{
 		if (empty)
 			empty = 0;
+		if (line.find(argv[2]) != std::string::npos)
+		{
+			match = 1;
+		}
 		line = replace(line, std::string(argv[2]), std::string(argv[3]));
 		content += line;
 		content.push_back('\n');
 	}
+	if (!match && !empty)
+	{
+		std::cout << "NO MUCH FOUND!" << std::endl;
+		return 1;
+	}
 	if (empty)
 	{
 		std::cout << "EMPTY FILE!" << std::endl;
-		return 0;
+		return 1;
 	}
+	std::ofstream output(fname);
 	output << content;
 	return 0;
 }

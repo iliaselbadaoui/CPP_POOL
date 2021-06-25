@@ -4,10 +4,9 @@ int main()
 {
     Karen karen;
 
-    void (Karen::* complainPtr)(std::string) =  &Karen::complain;
-    (karen.*complainPtr)("DEBUG");
-    (karen.*complainPtr)("INFO");
-    (karen.*complainPtr)("WARNING");
-    (karen.*complainPtr)("ERROR");
+    karen.complain("DEBUG");
+    karen.complain("WARNING");
+    karen.complain("INFO");
+    karen.complain("ERROR");
     return 0;
 }
