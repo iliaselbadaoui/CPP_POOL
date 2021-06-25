@@ -1,20 +1,8 @@
 #include "Zombie.hpp"
-#include <cstdlib>
-#include <ctime>
 
-int		randomRange(int min, int max)
+void	randomChump(string name)
 {
-	int	random;
 
-	random = rand() % (max - min);
-	return random;
-}
-
-void	randomChump(void)
-{
-	string names[] = {"Zoombie", "BIO", "XONE", "Zomblax", "Ultra", "Goku"};
-
-	Zombie *z = newZombie(names[randomRange(0, 6)]);
-    z->announce();
-    delete z;
+	Zombie z(name);
+    z.announce();
 }

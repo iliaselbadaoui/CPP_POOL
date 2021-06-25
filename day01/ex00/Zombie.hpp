@@ -6,15 +6,14 @@
 class Zombie
 {
 private:
-	string name, type;
+	string name;
 public:
 	Zombie();
 	~Zombie();
-	Zombie(string name, string type);
-	void	setType(string value);
+	Zombie(string name);
 	void	announce();
 };
 
-void	randomChump(void);
+void	randomChump(string name);
 Zombie	*newZombie(string name);
 #endif

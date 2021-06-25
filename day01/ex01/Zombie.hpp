@@ -6,13 +6,13 @@
 class Zombie
 {
 private:
-	string name, type;
+	string name;
 public:
 	Zombie();
 	~Zombie();
-	Zombie(string name, string type);
-	void	setType(string value);
+	Zombie(string name);
 	void	announce();
 };
+
 Zombie	*ZombieHorde(int n, string name);
 #endif
