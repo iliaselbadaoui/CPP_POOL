@@ -1,6 +1,6 @@
 compile = clang++ -Wall -Wextra -Werror
 src = *.cpp
-Name = ClapTrap
+Name = ScavTrap
 
 all: $(Name)
 

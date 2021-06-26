@@ -16,15 +16,18 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::attack(std::string const & target)
 {
+
     std::cout << "<" + this->name + ">" << "atacks <" + target + ">, causing <" << hitpoints << "> points of damage." << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    std::cout << "<" + this->name + ">" << "got a damage of <" << amount << "> points." << std::endl;
+    energy -= amount;
+    std::cout << "<" + this->name + ">" << "got a damage of <" << amount << "> points. REMAINING ENERGY is : " << energy << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-    std::cout << "<" + this->name + ">" << "energy is restored by <" << amount << "> points." << std::endl;
+    energy += amount;
+    std::cout << "<" + this->name + ">" << "energy is restored by <" << amount << "> points. THE ENERGY NOW IS " << energy << std::endl;
 }
