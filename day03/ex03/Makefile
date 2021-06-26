@@ -1,6 +1,6 @@
 compile = clang++ -Wall -Wextra -Werror
 src = *.cpp
-Name = FragTrap
+Name = DiamondTrap
 
 all: $(Name)
 
