@@ -28,7 +28,7 @@ int     main()
     diam.attack("Ydiam");
     diam.takeDamage(23);
     diam.beRepaired(20);
-    diam.highFivesGuys();
+    diam.whoAmI();
     std::cout << std::endl;
     return 0;
 }
