@@ -6,16 +6,16 @@
 
 class PowerFist
 {
+	private:
+		PowerFist( PowerFist const & src );
 
 	public:
 
 		PowerFist();
-		PowerFist( PowerFist const & src );
 		~PowerFist();
 
 		PowerFist &		operator=( PowerFist const & rhs );
 
-	private:
 
 };
 
