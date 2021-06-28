@@ -20,4 +20,4 @@ class PlasmaRifle : public AWeapon
 
 };
 
-std::ostream &			operator<<( std::ostream & o, PlasmaRifle const & i );
+std::ostream &			operator << ( std::ostream & o, PlasmaRifle const & i );

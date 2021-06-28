@@ -1,18 +1,20 @@
-#include "PowerFist.hpp"
+#include "Enemy.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-PowerFist::PowerFist() : AWeapon("Power Fist", 8, 50)
-{}
+Enemy::Enemy(int hp, std::string const & type)
+{
+
+}
 
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-PowerFist::~PowerFist()
+ Enemy::~ Enemy()
 {
 }
 
@@ -21,17 +23,18 @@ PowerFist::~PowerFist()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-PowerFist &				PowerFist::operator=( PowerFist const & rhs )
+ Enemy &				 Enemy::operator=(  Enemy const & rhs )
 {
-	this->name = rhs.getName();
-	this->apcost = rhs.getAPCost();
-	this->damage = rhs.getDamage();
+	//if ( this != &rhs )
+	//{
+		//this->_value = rhs.getValue();
+	//}
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, PowerFist const & i )
+std::ostream &			operator<<( std::ostream & o,  Enemy const & i )
 {
-	o << "I am a " << i.getName() << std::endl;
+	//o << "Value = " << i.getValue();
 	return o;
 }
 
@@ -40,10 +43,6 @@ std::ostream &			operator<<( std::ostream & o, PowerFist const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	PowerFist::attack() const
-{
-	std::cout << "* pschhh... SBAM! *" << std::endl;
-}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

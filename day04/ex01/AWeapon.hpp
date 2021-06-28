@@ -7,6 +7,7 @@ class AWeapon
 {
 	private:
 		AWeapon();
+		AWeapon( AWeapon const & src );
 
 	protected:
 		std::string name;
@@ -14,7 +15,6 @@ class AWeapon
 
 	public:
 		AWeapon(std::string const & name, int apcost, int damage);
-		AWeapon( AWeapon const & src );
 		virtual ~AWeapon();
 
 		std::string const &getName() const;

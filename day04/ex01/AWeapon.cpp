@@ -10,13 +10,6 @@ AWeapon::AWeapon(std::string const & name, int apcost, int damage)
 	this->damage = damage;
 }
 
-AWeapon::AWeapon( const AWeapon & src )
-{
-	this->name = src.getName();
-	this->apcost = src.getAPCost();
-	this->damage = src.getDamage();
-}
-
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
