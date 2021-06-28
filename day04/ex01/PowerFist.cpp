@@ -1,19 +1,23 @@
-#include "PlasmaRifle.hpp"
+#include "PowerFist.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-PlasmaRifle::PlasmaRifle() : AWeapon("Plasma Rifle", 5, 21)
-{}
+PowerFist::PowerFist()
+{
+}
 
+PowerFist::PowerFist( const PowerFist & src )
+{
+}
 
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-PlasmaRifle::~PlasmaRifle()
+PowerFist::~PowerFist()
 {
 }
 
@@ -22,17 +26,18 @@ PlasmaRifle::~PlasmaRifle()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-PlasmaRifle &				PlasmaRifle::operator=( PlasmaRifle const & rhs )
+PowerFist &				PowerFist::operator=( PowerFist const & rhs )
 {
-	this->name = rhs.getName();
-	this->apcost = rhs.getAPCost();
-	this->damage = rhs.getDamage();
+	//if ( this != &rhs )
+	//{
+		//this->_value = rhs.getValue();
+	//}
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, PlasmaRifle const & i )
+std::ostream &			operator<<( std::ostream & o, PowerFist const & i )
 {
-	o << "I am a " << i.getName() << std::endl;
+	//o << "Value = " << i.getValue();
 	return o;
 }
 
@@ -41,10 +46,6 @@ std::ostream &			operator<<( std::ostream & o, PlasmaRifle const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	PlasmaRifle::attack() const
-{
-	std::cout << "* piouuu piouuu piouuu *" << std::endl;
-}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
