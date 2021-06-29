@@ -1,13 +1,15 @@
-#include "Enemy.hpp"
+#include "Character.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Enemy::Enemy(int hp, std::string const & type)
+Character::Character()
 {
-	this->hp = hp;
-	this->type = type;
+}
+
+Character::Character( const Character & src )
+{
 }
 
 
@@ -15,7 +17,7 @@ Enemy::Enemy(int hp, std::string const & type)
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
- Enemy::~ Enemy()
+Character::~Character()
 {
 }
 
@@ -24,16 +26,18 @@ Enemy::Enemy(int hp, std::string const & type)
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
- Enemy &				 Enemy::operator=(Enemy const & rhs)
+Character &				Character::operator=( Character const & rhs )
 {
-	this->hp = rhs.getHP();
-	this->type = rhs.getType();
+	//if ( this != &rhs )
+	//{
+		//this->_value = rhs.getValue();
+	//}
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o,  Enemy const & i )
+std::ostream &			operator<<( std::ostream & o, Character const & i )
 {
-	o << "Hey there I am just an Enemy";
+	//o << "Value = " << i.getValue();
 	return o;
 }
 
@@ -42,25 +46,10 @@ std::ostream &			operator<<( std::ostream & o,  Enemy const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void Enemy::takeDamage(int damage)
-{
-	if (damage > 0 && this->hp >= damage)
-	{
-		this->hp -= damage;
-	}
-}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-std::string const &Enemy::getType() const
-{
-	return this->type;
-}
 
-int	Enemy::getHP() const
-{
-	return this->hp;
-}
 
 /* ************************************************************************** */

@@ -43,11 +43,6 @@ std::ostream &			operator<<( std::ostream & o, AWeapon const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	AWeapon::attack() const
-{
-	std::cout << "doooooow doooooow doooooow";
-}
-
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */

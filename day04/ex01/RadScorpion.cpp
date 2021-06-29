@@ -1,13 +1,12 @@
-#include "Enemy.hpp"
+#include "RadScorpion.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Enemy::Enemy(int hp, std::string const & type)
+RadScorpion::RadScorpion() : Enemy(80, "RadScorpion")
 {
-	this->hp = hp;
-	this->type = type;
+	std::cout << "* click click click *" << std::endl;
 }
 
 
@@ -15,8 +14,9 @@ Enemy::Enemy(int hp, std::string const & type)
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
- Enemy::~ Enemy()
+RadScorpion::~RadScorpion()
 {
+	std::cout << "* SPROTCH *" << std::endl;
 }
 
 
@@ -24,16 +24,16 @@ Enemy::Enemy(int hp, std::string const & type)
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
- Enemy &				 Enemy::operator=(Enemy const & rhs)
+RadScorpion &				RadScorpion::operator=( RadScorpion const & rhs )
 {
-	this->hp = rhs.getHP();
+	this->hp =  rhs.getHP();
 	this->type = rhs.getType();
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o,  Enemy const & i )
+std::ostream &			operator<<( std::ostream & o, RadScorpion const & i )
 {
-	o << "Hey there I am just an Enemy";
+	o << "Hey there I am an Enemy, and my type is " << i.getType() << ", my current HP is : " << i.getHP();
 	return o;
 }
 
@@ -42,25 +42,9 @@ std::ostream &			operator<<( std::ostream & o,  Enemy const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void Enemy::takeDamage(int damage)
-{
-	if (damage > 0 && this->hp >= damage)
-	{
-		this->hp -= damage;
-	}
-}
-
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-std::string const &Enemy::getType() const
-{
-	return this->type;
-}
 
-int	Enemy::getHP() const
-{
-	return this->hp;
-}
 
 /* ************************************************************************** */

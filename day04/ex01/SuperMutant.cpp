@@ -1,13 +1,12 @@
-#include "Enemy.hpp"
+#include "SuperMutant.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Enemy::Enemy(int hp, std::string const & type)
+SuperMutant::SuperMutant() : Enemy(170, "Super Mutant")
 {
-	this->hp = hp;
-	this->type = type;
+	std::cout << "Gaaah. Me want smash heads!" << std::endl;
 }
 
 
@@ -15,8 +14,9 @@ Enemy::Enemy(int hp, std::string const & type)
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
- Enemy::~ Enemy()
+SuperMutant::~SuperMutant()
 {
+	std::cout << "Aaargh..." << std::endl;
 }
 
 
@@ -24,16 +24,16 @@ Enemy::Enemy(int hp, std::string const & type)
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
- Enemy &				 Enemy::operator=(Enemy const & rhs)
+SuperMutant &				SuperMutant::operator=( SuperMutant const & rhs )
 {
 	this->hp = rhs.getHP();
 	this->type = rhs.getType();
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o,  Enemy const & i )
+std::ostream &			operator<<( std::ostream & o, SuperMutant const & i )
 {
-	o << "Hey there I am just an Enemy";
+	o << "Hey there I am an Enemy, and my type is " << i.getType() << ", my current HP is : " << i.getHP();
 	return o;
 }
 
@@ -42,25 +42,17 @@ std::ostream &			operator<<( std::ostream & o,  Enemy const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void Enemy::takeDamage(int damage)
+void		SuperMutant::takeDamage(int damage)
 {
-	if (damage > 0 && this->hp >= damage)
+	if (damage >= 3 && this->hp >= damage)
 	{
-		this->hp -= damage;
+		this->hp -= damage - 3;
 	}
 }
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-std::string const &Enemy::getType() const
-{
-	return this->type;
-}
 
-int	Enemy::getHP() const
-{
-	return this->hp;
-}
 
 /* ************************************************************************** */
