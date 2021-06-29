@@ -33,7 +33,7 @@ Enemy::Enemy(int hp, std::string const & type)
 
 std::ostream &			operator<<( std::ostream & o,  Enemy const & i )
 {
-	o << "Hey there I am just an Enemy";
+	o << "Hey there I am just an Enemy " << i.getType() << std::endl;
 	return o;
 }
 

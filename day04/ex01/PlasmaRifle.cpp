@@ -32,7 +32,7 @@ PlasmaRifle &				PlasmaRifle::operator=( PlasmaRifle const & rhs )
 
 std::ostream &			operator<<( std::ostream & o, PlasmaRifle const & i )
 {
-	o << "I am a " << i.getName() << std::endl;
+	o << "I am a " << i.getName();
 	return o;
 }
 

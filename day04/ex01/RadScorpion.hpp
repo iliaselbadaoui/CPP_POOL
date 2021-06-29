@@ -16,6 +16,8 @@ class RadScorpion : public Enemy
 
 		RadScorpion &		operator=( RadScorpion const & rhs );
 
+		virtual void	takeDamage(int);
+
 };
 
 std::ostream &			operator<<( std::ostream & o, RadScorpion const & i );

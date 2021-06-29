@@ -33,7 +33,7 @@ SuperMutant &				SuperMutant::operator=( SuperMutant const & rhs )
 
 std::ostream &			operator<<( std::ostream & o, SuperMutant const & i )
 {
-	o << "Hey there I am an Enemy, and my type is " << i.getType() << ", my current HP is : " << i.getHP();
+	o << "Hey there I am an Enemy, and my type is " << i.getType() << ", my current HP is : " << i.getHP() << std::endl;
 	return o;
 }
 

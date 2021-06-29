@@ -1,6 +1,6 @@
 compile = clang++ --std=c++98 -Wall -Wextra -Werror
 src = *.cpp
-Name = ClapTrap
+Name = FireGame
 
 all: $(Name)
 

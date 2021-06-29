@@ -10,7 +10,6 @@ AWeapon::AWeapon(std::string const & name, int apcost, int damage)
 	this->damage = damage;
 }
 
-
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
@@ -34,7 +33,7 @@ AWeapon &				AWeapon::operator=( AWeapon const & rhs )
 
 std::ostream &			operator<<( std::ostream & o, AWeapon const & i )
 {
-	o << "I am a " << i.getName() << std::endl;
+	o << "I am a " << i.getName();
 	return o;
 }
 
