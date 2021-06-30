@@ -9,7 +9,6 @@ TacticalMarine::TacticalMarine()
 	std::cout << "Tactical Marine ready for battle!" << std::endl;
 }
 
-
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
@@ -24,13 +23,6 @@ TacticalMarine::~TacticalMarine()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-std::ostream &			operator<<( std::ostream & o, TacticalMarine const & i )
-{
-	o << "This is a TacticalMarin who says ";
-	i.meleeAttack();
-	return o;
-}
-
 
 /*
 ** --------------------------------- METHODS ----------------------------------
@@ -38,7 +30,7 @@ std::ostream &			operator<<( std::ostream & o, TacticalMarine const & i )
 
 ISpaceMarine* TacticalMarine::clone() const
 {
-	return (new TacticalMarine(*this));
+	return (new TacticalMarine());
 }
 
 void TacticalMarine::battleCry() const

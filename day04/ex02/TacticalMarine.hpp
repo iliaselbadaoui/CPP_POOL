@@ -7,8 +7,8 @@
 class TacticalMarine: public ISpaceMarine
 {
 	private:
-		TacticalMarine( TacticalMarine const & src );
 		TacticalMarine &		operator=( TacticalMarine const & rhs );
+		TacticalMarine( TacticalMarine const & src );
 
 	public:
 

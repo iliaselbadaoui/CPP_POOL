@@ -7,8 +7,8 @@
 class AssaultTerminator: public ISpaceMarine
 {
 	private:
-		AssaultTerminator( AssaultTerminator const & src );
 		AssaultTerminator &		operator=( AssaultTerminator const & rhs );
+		AssaultTerminator( AssaultTerminator const & src );
 
 	public:
 

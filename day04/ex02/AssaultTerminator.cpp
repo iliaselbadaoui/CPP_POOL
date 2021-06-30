@@ -19,17 +19,9 @@ AssaultTerminator::~AssaultTerminator()
 	std::cout <<  "I’ll be back..." << std::endl;
 }
 
-
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
-
-std::ostream &			operator<<( std::ostream & o, AssaultTerminator const & i )
-{
-	o << "This is a AssaultTerminator who says :";
-	i.battleCry();
-	return o;
-}
 
 
 /*
@@ -37,7 +29,7 @@ std::ostream &			operator<<( std::ostream & o, AssaultTerminator const & i )
 */
 ISpaceMarine* AssaultTerminator::clone() const
 {
-	return (new AssaultTerminator(*this));
+	return (new AssaultTerminator());
 }
 void AssaultTerminator::battleCry() const
 {
