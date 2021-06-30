@@ -10,11 +10,20 @@ Squad::Squad()
 	this->count = -1;
 }
 
+void	deleteSquad(ISpaceMarine **squad, int count)
+{
+	for (int i = 0; i <= count; i++)
+	{
+		delete squad[i];
+	}
+	delete squad;
+}
+
 Squad::Squad( const Squad & src )
 {
 	if (src.getCount() >= 0)
 	{
-		delete [] *this->squad;
+		deleteSquad(this->squad, this->count);
 		this->squad = new ISpaceMarine*[src.getCount()];
 		for (int i = 0; i < src.getCount(); i++)
 		{
@@ -36,6 +45,7 @@ Squad::Squad( const Squad & src )
 
 Squad::~Squad()
 {
+	deleteSquad(this->squad, this->count);
 }
 
 
@@ -47,7 +57,7 @@ Squad &				Squad::operator=( Squad const & rhs )
 {
 	if (rhs.getCount() > 0)
 	{
-		delete [] *this->squad;
+		deleteSquad(this->squad, this->count);
 		this->squad = new ISpaceMarine*[rhs.getCount()];
 		for (int i = 0; i < rhs.getCount(); i++)
 		{
@@ -91,14 +101,15 @@ int Squad::push(ISpaceMarine* marine)
 	}
 	else
 	{
-		delete [] *(this->squad);
+		ISpaceMarine **tmp = this->squad;
 		++this->count;
-		this->squad = new ISpaceMarine*[this->getCount()];
-		for (int i = 0; i < this->getCount() - 1; i++)
+		this->squad = new ISpaceMarine*[this->getCount() + 1];
+		for (int i = 0; i <= this->count; i++)
 		{
-			this->squad[i] = this->squad[i]->clone();
+			this->squad[i] = tmp[i];
 		}
-		this->squad[count - 1] = marine;
+		this->squad[count] = marine;
+		delete []tmp;
 	}
 	return count;
 }
