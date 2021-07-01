@@ -12,18 +12,6 @@ MateriaSource::MateriaSource()
 	count = -1;
 }
 
-void	deleteMaterias(AMateria **materia, int count)
-{
-	if (count >= 0)
-	{
-		for (int i = 0; i <= count; i++)
-		{
-			delete materia[i];
-		}
-		delete materia;
-	}
-}
-
 MateriaSource::MateriaSource( const MateriaSource & src )
 {
 	AMateria	**srcMaterias;
@@ -31,7 +19,7 @@ MateriaSource::MateriaSource( const MateriaSource & src )
 	{
 		srcMaterias = src.getMateria();
 
-		deleteMaterias(this->materia, this->count);
+		AMateria::deleteMaterias(this->materia, this->count);
 		this->materia = new AMateria*[4];
 		for (int i = 0; i <= src.getCount(); i++)
 		{
@@ -47,7 +35,7 @@ MateriaSource::MateriaSource( const MateriaSource & src )
 
 MateriaSource::~MateriaSource()
 {
-	deleteMaterias(this->materia, this->count);
+	AMateria::deleteMaterias(this->materia, this->count);
 }
 
 
@@ -62,7 +50,7 @@ MateriaSource &				MateriaSource::operator=( MateriaSource const & rhs )
 	{
 		rhsMaterias = rhs.getMateria();
 
-		deleteMaterias(this->materia, this->count);
+		AMateria::deleteMaterias(this->materia, this->count);
 		this->materia = new AMateria*[4];
 		for (int i = 0; i <= rhs.getCount(); i++)
 		{
@@ -79,7 +67,7 @@ MateriaSource &				MateriaSource::operator=( MateriaSource const & rhs )
 
 void MateriaSource::learnMateria(AMateria* m)
 {
-	if (this->count <= 3 && m)
+	if (this->count <= 3)
 	{
 		++this->count;
 		this->materia[this->count] = m;
@@ -87,15 +75,29 @@ void MateriaSource::learnMateria(AMateria* m)
 }
 AMateria* MateriaSource::createMateria(std::string const & type)
 {
-	for (int i = 0; i < this->count; i++)
+	if (type != "cure" && type != "ice")
+		return (0);
+	for (int i = 0; i <= this->count; i++)
 	{
-		if (this->materia[i]->getType() == type && type == "ice")
-			return (new Ice(*(Ice *)(this->materia[i])));
-		else if (this->materia[i]->getType() == type && type == "cure")
-			return (new Cure(*(Cure *)(this->materia[i])));
+		if (this->materia[i]->getType() == "ice" && type == "ice")
+		{
+			return (new Ice(*((Ice *)(this->materia[i]))));
+		}
+		if (this->materia[i]->getType() == "cure" && type == "cure")
+		{
+			return (new Cure(*((Cure *)(this->materia[i]))));
+		}
 	}
-	
+	return 0;
+}
 
+int		MateriaSource::getCount() const
+{
+	return this->count;
+}
+AMateria 	**MateriaSource::getMateria() const
+{
+	return this->materia;
 }
 
 /*

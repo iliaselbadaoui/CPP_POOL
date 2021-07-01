@@ -2,7 +2,6 @@
 
 # include <iostream>
 # include <string>
-# include "AMateria.hpp"
 # include "ICharacter.hpp"
 
 class Character: public ICharacter

@@ -11,18 +11,6 @@ Character::Character( const std::string & name )
 	count = -1;
 }
 
-void	deleteMaterias(AMateria **materia, int count)
-{
-	if (count >= 0)
-	{
-		for (int i = 0; i <= count; i++)
-		{
-			delete materia[i];
-		}
-		delete materia;
-	}
-}
-
 Character::Character( const Character & src )
 {
 	AMateria	**srcMaterias;
@@ -30,7 +18,7 @@ Character::Character( const Character & src )
 	{
 		srcMaterias = src.getMateria();
 
-		deleteMaterias(this->materia, this->count);
+		AMateria::deleteMaterias(this->materia, this->count);
 		this->materia = new AMateria*[4];
 		for (int i = 0; i <= src.getCount(); i++)
 		{
@@ -46,7 +34,7 @@ Character::Character( const Character & src )
 
 Character::~Character()
 {
-	deleteMaterias(this->materia, this->count);
+	AMateria::deleteMaterias(this->materia, this->count);
 }
 
 
@@ -61,7 +49,7 @@ Character &				Character::operator=( Character const & rhs )
 	{
 		rhsMaterias = rhs.getMateria();
 
-		deleteMaterias(this->materia, this->count);
+		AMateria::deleteMaterias(this->materia, this->count);
 		this->materia = new AMateria*[4];
 		for (int i = 0; i <= rhs.getCount(); i++)
 		{

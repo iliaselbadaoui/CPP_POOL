@@ -9,6 +9,7 @@ class MateriaSource: public IMateriaSource
 	private:
 		AMateria **materia;
 		int count;
+		MateriaSource &		operator=( MateriaSource const & rhs );
 	public:
 
 		MateriaSource();
@@ -20,7 +21,6 @@ class MateriaSource: public IMateriaSource
 		virtual void learnMateria(AMateria*);
 		virtual AMateria* createMateria(std::string const & type);
 
-		MateriaSource &		operator=( MateriaSource const & rhs );
 
 
 };

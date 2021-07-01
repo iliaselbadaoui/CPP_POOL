@@ -39,6 +39,18 @@ AMateria	&AMateria::operator=( AMateria const & rhs )
 ** --------------------------------- METHODS ----------------------------------
 */
 
+void	AMateria::deleteMaterias(AMateria **materia, int count)
+{
+	if (count >= 0)
+	{
+		for (int i = 0; i <= count; i++)
+		{
+			delete materia[i];
+		}
+		delete materia;
+	}
+}
+
 std::string const & AMateria::getType() const
 {
 	return (this->type);
@@ -46,6 +58,12 @@ std::string const & AMateria::getType() const
 unsigned int AMateria::getXP() const
 {
 	return (this->_xp);
+}
+
+void AMateria::use(ICharacter& target)
+{
+	target.getName();
+	this->_xp += 10;
 }
 
 /*

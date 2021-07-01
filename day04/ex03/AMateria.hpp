@@ -4,6 +4,8 @@
 # include <string>
 # include "ICharacter.hpp"
 
+class ICharacter;
+
 class AMateria
 {
 	private :
@@ -25,6 +27,7 @@ class AMateria
 	unsigned int getXP() const; //Returns the Materia's XP
 	virtual AMateria* clone() const = 0;
 	virtual void use(ICharacter& target);
+	static void	deleteMaterias(AMateria **materia, int count);
 };
 
 std::ostream &			operator<<( std::ostream & o, AMateria const & i );
