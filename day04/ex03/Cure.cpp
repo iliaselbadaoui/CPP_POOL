@@ -1,27 +1,21 @@
-#include "AMateria.hpp"
+#include "Cure.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-AMateria::AMateria(std::string const & type)
-{
-	this->type = type;
-	this->_xp = 0;
-}
+Cure::Cure() : AMateria("cure")
+{	}
 
-AMateria::AMateria( const AMateria & src )
-{
-	this->type = src.getType();
-	this->_xp = src.getXP();
-}
+Cure::Cure( const Cure & src ) : AMateria (src)
+{	}
 
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-AMateria::~AMateria()
+Cure::~Cure()
 {
 }
 
@@ -30,22 +24,19 @@ AMateria::~AMateria()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-AMateria	&AMateria::operator=( AMateria const & rhs )
-{
-	this->_xp = rhs.getXP();
-	return *this;
-}
+
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
-std::string const & AMateria::getType() const
+AMateria* Cure::clone() const
 {
-	return (this->type);
+	return (new Cure(*this));
 }
-unsigned int AMateria::getXP() const
+void Cure::use(ICharacter& target)
 {
-	return (this->_xp);
+	this->_xp += 10;
+	std::cout << "* Heals " << target.getName() << "'s wounds *" << std::endl;
 }
 
 /*

@@ -1,27 +1,21 @@
-#include "AMateria.hpp"
+#include "Ice.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-AMateria::AMateria(std::string const & type)
-{
-	this->type = type;
-	this->_xp = 0;
-}
+Ice::Ice() : AMateria("ice")
+{	}
 
-AMateria::AMateria( const AMateria & src )
-{
-	this->type = src.getType();
-	this->_xp = src.getXP();
-}
+Ice::Ice( const Ice & src ) : AMateria(src)
+{	}
 
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-AMateria::~AMateria()
+Ice::~Ice()
 {
 }
 
@@ -30,22 +24,17 @@ AMateria::~AMateria()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-AMateria	&AMateria::operator=( AMateria const & rhs )
-{
-	this->_xp = rhs.getXP();
-	return *this;
-}
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
-
-std::string const & AMateria::getType() const
+AMateria* Ice::clone() const
 {
-	return (this->type);
+	return (new Ice(*this));
 }
-unsigned int AMateria::getXP() const
+void Ice::use(ICharacter& target)
 {
-	return (this->_xp);
+	this->_xp += 10;
+	std::cout << "* Shoots an ice bolt at " << target.getName() << std::endl;
 }
 
 /*
