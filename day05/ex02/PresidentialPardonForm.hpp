@@ -13,11 +13,12 @@ class PresidentialPardonForm : public Form
 		PresidentialPardonForm( PresidentialPardonForm const & src );
 		virtual ~PresidentialPardonForm();
 
-		PresidentialPardonForm &		operator=( PresidentialPardonForm const & rhs );
 
 		virtual void	beSigned(Bureaucrat const &bureaucrat) const;
 		virtual void	execute(Bureaucrat const &excutor) const;
+		void	Action(std::string exec_name);
 		
+		PresidentialPardonForm &		operator=( PresidentialPardonForm const & rhs );
 
 };
 

@@ -37,11 +37,19 @@ void	PresidentialPardonForm::beSigned(Bureaucrat const &bureaucrat) const
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void		PresidentialPardonForm::execute(Bureaucrat const &excutor) const
+void		PresidentialPardonForm::Action(std::string exec_name)
 {
-	std::cout << excutor.getName() << " has been pardoned by Zafod Beeblebrox" << std::endl;
+	std::cout << exec_name << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }
 
+void		PresidentialPardonForm::execute(Bureaucrat const &excutor) const
+{
+	if (this->getSigned())
+		throw Form::FormIsSignedException();
+	else if (excutor.getGrade() > this->getGradeToExecute())
+		throw Form::GradeTooLowException();
+	beSigned(excutor);
+}
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */

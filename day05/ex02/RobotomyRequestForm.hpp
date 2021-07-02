@@ -14,12 +14,13 @@ class RobotomyRequestForm : public Form
 		RobotomyRequestForm( RobotomyRequestForm const & src );
 		virtual ~RobotomyRequestForm();
 
-		RobotomyRequestForm &		operator=( RobotomyRequestForm const & rhs );
 
 		virtual void	beSigned(Bureaucrat const &bureaucrat) const;
 		virtual void	execute(Bureaucrat const &excutor) const;
 		
+		void	Action(std::string exec_name);
 
+		RobotomyRequestForm &		operator=( RobotomyRequestForm const & rhs );
 };
 
 std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & i );

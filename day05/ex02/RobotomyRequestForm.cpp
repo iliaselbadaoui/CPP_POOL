@@ -37,11 +37,19 @@ void	RobotomyRequestForm::beSigned(Bureaucrat const &bureaucrat) const
 		throw Form::GradeTooLowException();
 }
 
-void		RobotomyRequestForm::execute(Bureaucrat const &excutor) const
+void		RobotomyRequestForm::Action(std::string exec_name)
 {
-	std::cout << excutor.getName() << " has been pardoned by Zafod Beeblebrox" << std::endl;
+	std::cout << exec_name << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }
 
+void		RobotomyRequestForm::execute(Bureaucrat const &excutor) const
+{
+	if (this->getSigned())
+		throw Form::FormIsSignedException();
+	else if (excutor.getGrade() > this->getGradeToExecute())
+		throw Form::GradeTooLowException();
+	beSigned(excutor);
+}
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */

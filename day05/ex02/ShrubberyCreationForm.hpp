@@ -18,6 +18,8 @@ class ShrubberyCreationForm: public Form
 
 		virtual void	beSigned(Bureaucrat const &bureaucrat) const;
 		virtual void	execute(Bureaucrat const &excutor) const;
+
+		void	Action(std::string exec_name);
 		
 		ShrubberyCreationForm &		operator=( ShrubberyCreationForm const & rhs );
 
