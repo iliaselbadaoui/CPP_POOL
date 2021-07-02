@@ -70,6 +70,15 @@ void	Bureaucrat::decrement()
 		throw Bureaucrat::GradeTooLowException();
 	
 }
+
+void		Bureaucrat::signForm(Form form) const
+{
+	if (this->grade > form.getGradeToExecute() || this->grade > form.getGradeToSign())
+		std::cout << this->name << " cannot sign " << form.getName() << " because ";
+	else
+		std::cout << this->name << " signs " << form.getName() << std::endl;
+}
+
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */

@@ -1,6 +1,6 @@
 compile = clang++ --std=c++98 -Wall -Wextra -Werror
 src = *.cpp
-Name = Bureaucrat
+Name = BureaucratForm
 
 all: $(Name)
 
