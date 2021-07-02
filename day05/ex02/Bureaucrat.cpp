@@ -71,12 +71,12 @@ void	Bureaucrat::decrement()
 	
 }
 
-void		Bureaucrat::signForm(Form Form) const
+void		Bureaucrat::signForm(Form *form) const
 {
-	if (this->grade > Form.getGradeToExecute() || this->grade > Form.getGradeToSign())
-		std::cout << this->name << " cannot sign " << Form.getName() << " because ";
+	if (this->grade > form->getGradeToExecute() || this->grade > form->getGradeToSign())
+		std::cout << this->name << " cannot sign " << form->getName() << " because ";
 	else
-		std::cout << this->name << " signs " << Form.getName() << std::endl;
+		std::cout << this->name << " signs " << form->getName() << std::endl;
 }
 
 /*

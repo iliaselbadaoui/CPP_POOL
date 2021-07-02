@@ -53,13 +53,6 @@ std::ostream &			operator<<( std::ostream & o, Form const & i )
 */
 
 
-void	Form::beSigned(Bureaucrat bureaucrat) const
-{
-	bureaucrat.signForm(*this);
-	if (bureaucrat.getGrade() > this->getGradeToSign() || bureaucrat.getGrade() > this->getGradeToExecute())
-		throw Form::GradeTooLowException();
-}
-
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */

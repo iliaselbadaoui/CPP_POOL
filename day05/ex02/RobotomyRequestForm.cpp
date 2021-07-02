@@ -1,55 +1,50 @@
-// #include "RobotomyRequestForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
-// /*
-// ** ------------------------------- CONSTRUCTOR --------------------------------
-// */
+/*
+** ------------------------------- CONSTRUCTOR --------------------------------
+*/
 
-// RobotomyRequestForm::RobotomyRequestForm()
-// {
-// }
+RobotomyRequestForm::RobotomyRequestForm(std::string target): Form(target, 72, 45)
+{
+}
 
-// RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src )
-// {
-// }
-
-
-// /*
-// ** -------------------------------- DESTRUCTOR --------------------------------
-// */
-
-// RobotomyRequestForm::~RobotomyRequestForm()
-// {
-// }
+RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src ): Form(src)
+{
+}
 
 
-// /*
-// ** --------------------------------- OVERLOAD ---------------------------------
-// */
+/*
+** -------------------------------- DESTRUCTOR --------------------------------
+*/
 
-// RobotomyRequestForm &				RobotomyRequestForm::operator=( RobotomyRequestForm const & rhs )
-// {
-// 	//if ( this != &rhs )
-// 	//{
-// 		//this->_value = rhs.getValue();
-// 	//}
-// 	return *this;
-// }
-
-// std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
+RobotomyRequestForm::~RobotomyRequestForm()
+{
+}
 
 
-// /*
-// ** --------------------------------- METHODS ----------------------------------
-// */
+/*
+** --------------------------------- OVERLOAD ---------------------------------
+*/
+
+/*
+** --------------------------------- METHODS ----------------------------------
+*/
+
+void	RobotomyRequestForm::beSigned(Bureaucrat const &bureaucrat) const
+{
+	bureaucrat.signForm((Form *)this);
+	if (bureaucrat.getGrade() > this->getGradeToSign() || bureaucrat.getGrade() > this->getGradeToExecute())
+		throw Form::GradeTooLowException();
+}
+
+void		RobotomyRequestForm::execute(Bureaucrat const &excutor) const
+{
+	std::cout << this->getName() << " has been pardoned by Zafod Beeblebrox" << std::endl;
+}
+
+/*
+** --------------------------------- ACCESSOR ---------------------------------
+*/
 
 
-// /*
-// ** --------------------------------- ACCESSOR ---------------------------------
-// */
-
-
-// /* ************************************************************************** */
+/* ************************************************************************** */

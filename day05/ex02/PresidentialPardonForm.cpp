@@ -4,7 +4,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-PresidentialPardonForm::PresidentialPardonForm(Bureaucrat target) : Form(target.getName(), 72, 45)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form(target, 25, 5)
 {
 }
 
@@ -26,13 +26,18 @@ PresidentialPardonForm::~PresidentialPardonForm()
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
-
+void	PresidentialPardonForm::beSigned(Bureaucrat const &bureaucrat) const
+{
+	bureaucrat.signForm((Form *)this);
+	if (bureaucrat.getGrade() > this->getGradeToSign() || bureaucrat.getGrade() > this->getGradeToExecute())
+		throw Form::GradeTooLowException();
+}
 
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void		PresidentialPardonForm::Action()
+void		PresidentialPardonForm::execute(Bureaucrat const &excutor) const
 {
 	std::cout << this->getName() << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }

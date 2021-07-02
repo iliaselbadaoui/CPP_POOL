@@ -4,7 +4,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-ShrubberyCreationForm::ShrubberyCreationForm(Bureaucrat target) : Form(target.getName(), 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form(target, 145, 137)
 { }
 
 ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & src ) : Form(src)
@@ -57,13 +57,19 @@ void	asciiTree(std::ofstream &file)
 	file <<"               ...;%@@@@@%%:;;;;,.." << std::endl;
 }
 
-void		ShrubberyCreationForm::Action()
+void		ShrubberyCreationForm::execute(Bureaucrat const &excutor) const
 {
 	std::ofstream target_file(this->getName() + "_shrubbery");
 	asciiTree(target_file);
 	target_file.close();
 }
 
+void	ShrubberyCreationForm::beSigned(Bureaucrat const &bureaucrat) const
+{
+	bureaucrat.signForm((Form *)this);
+	if (bureaucrat.getGrade() > this->getGradeToSign() || bureaucrat.getGrade() > this->getGradeToExecute())
+		throw Form::GradeTooLowException();
+}
 
 /*
 ** --------------------------------- METHODS ----------------------------------
