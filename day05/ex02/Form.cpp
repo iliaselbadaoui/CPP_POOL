@@ -12,7 +12,7 @@ void	gradeOutOfBound(int grade)
 		throw Form::GradeTooLowException();
 }
 
-Form::Form(std::string const &formName, int signeGrade, int executeGrade) : name(formName), gradeToSign(signeGrade), gradeToExecute(executeGrade)
+Form::Form(std::string const &FormName, int signeGrade, int executeGrade) : name(FormName), gradeToSign(signeGrade), gradeToExecute(executeGrade)
 {
 	gradeOutOfBound(signeGrade);
 	gradeOutOfBound(executeGrade);
@@ -40,7 +40,7 @@ Form::~Form()
 
 std::ostream &			operator<<( std::ostream & o, Form const & i )
 {
-	o << "FORM : " << i.getName() << std:: endl;
+	o << "Form : " << i.getName() << std:: endl;
 	o << "\t\tGRADE TO SIGN : " << i.getGradeToSign() << std::endl;
 	o << "\t\tGRADE TO EXCUTE : " << i.getGradeToExecute() << std::endl;
 	o << "\t\tIS SIGNED : " << ((i.getSigned()) ? "YES" : "NO") << std::endl;

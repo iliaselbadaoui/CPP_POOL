@@ -1,15 +1,16 @@
 # include "Bureaucrat.hpp"
 # include "Form.hpp"
+# include "ShrubberyCreationForm.hpp"
 int main()
 {
 	try
 	{
-		Form form("CrazyForm", 7, 3);
+		Form Form("CrazyForm", 7, 3);
 		Bureaucrat bureaucrat("Square", 4);
-
+	
 		try
 		{
-			form.beSigned(bureaucrat);
+			Form.beSigned(bureaucrat);
 		}
 		catch(const std::exception& e)
 		{

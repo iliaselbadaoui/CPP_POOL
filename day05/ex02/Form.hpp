@@ -19,7 +19,7 @@ class Form
 	public:
 		Form(std::string const &name, int signeGrade, int executeGrade);
 		Form( Form const & src );
-		~Form();
+		virtual ~Form();
 
 		// ACCESSORS
 		std::string		const &getName() const;
@@ -28,7 +28,7 @@ class Form
 		int				getGradeToExecute() const;
 
 		// MEMBER FUNCTIONS
-		void	beSigned(Bureaucrat bureaucrat) const;
+		virtual void	beSigned(Bureaucrat bureaucrat) const = 0;
 
 	class GradeTooHighException : public std::exception
 	{
