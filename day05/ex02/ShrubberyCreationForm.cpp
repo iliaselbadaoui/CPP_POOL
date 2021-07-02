@@ -59,7 +59,7 @@ void	asciiTree(std::ofstream &file)
 
 void		ShrubberyCreationForm::execute(Bureaucrat const &excutor) const
 {
-	std::ofstream target_file(this->getName() + "_shrubbery");
+	std::ofstream target_file(excutor.getName() + "_shrubbery");
 	asciiTree(target_file);
 	target_file.close();
 }
@@ -67,7 +67,7 @@ void		ShrubberyCreationForm::execute(Bureaucrat const &excutor) const
 void	ShrubberyCreationForm::beSigned(Bureaucrat const &bureaucrat) const
 {
 	bureaucrat.signForm((Form *)this);
-	if (bureaucrat.getGrade() > this->getGradeToSign() || bureaucrat.getGrade() > this->getGradeToExecute())
+	if (bureaucrat.getGrade() > this->getGradeToSign())
 		throw Form::GradeTooLowException();
 }
 

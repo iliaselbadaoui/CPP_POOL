@@ -52,6 +52,13 @@ std::ostream &			operator<<( std::ostream & o, Form const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
+void		Form::execute(Bureaucrat const &excutor) const
+{
+	if (this->getSigned())
+		throw Form::FormIsSignedException();
+	else if (excutor.getGrade() > this->gradeToExecute)
+		throw Form::GradeTooLowException();
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

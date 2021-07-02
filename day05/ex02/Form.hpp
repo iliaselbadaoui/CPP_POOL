@@ -47,6 +47,14 @@ class Form
 				return "Grade is to low";
 			};
 	};
+	class FormIsSignedException : public std::exception
+	{
+		public :
+			const char* what() const throw()
+			{
+				return "Form already signed";
+			};
+	};
 };
 
 std::ostream &			operator<<( std::ostream & o, Form const & i );
