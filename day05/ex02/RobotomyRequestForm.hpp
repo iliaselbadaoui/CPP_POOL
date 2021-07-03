@@ -1,5 +1,4 @@
-#ifndef ROBOTOMYREQUESTForm_HPP
-# define ROBOTOMYREQUESTForm_HPP
+# pragma once
 
 # include <iostream>
 # include <string>
@@ -15,14 +14,12 @@ class RobotomyRequestForm : public Form
 		virtual ~RobotomyRequestForm();
 
 
-		virtual void	beSigned(Bureaucrat const &bureaucrat) const;
+		virtual void	beSigned(Bureaucrat const &bureaucrat);
 		virtual void	execute(Bureaucrat const &excutor) const;
 		
-		void	Action(std::string exec_name);
+		void	Action(std::string  exec_name) const;
 
 		RobotomyRequestForm &		operator=( RobotomyRequestForm const & rhs );
 };
 
 std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & i );
-
-#endif /* ********************************************* ROBOTOMYREQUESTForm_H */

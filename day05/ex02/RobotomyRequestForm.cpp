@@ -30,25 +30,24 @@ RobotomyRequestForm::~RobotomyRequestForm()
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void	RobotomyRequestForm::beSigned(Bureaucrat const &bureaucrat) const
+void	RobotomyRequestForm::beSigned(Bureaucrat const &bureaucrat)
 {
-	bureaucrat.signForm((Form *)this);
-	if (bureaucrat.getGrade() > this->getGradeToSign())
-		throw Form::GradeTooLowException();
+	Form::beSigned(bureaucrat);
 }
 
-void		RobotomyRequestForm::Action(std::string exec_name)
+void		RobotomyRequestForm::Action(std::string exec_name) const
 {
-	std::cout << exec_name << " has been pardoned by Zafod Beeblebrox" << std::endl;
+	std::string randOut[2];
+
+	randOut[0] = "BaqBaqBaqBaqBaqBaq! " + exec_name + " has been robotomized successfully.";
+	randOut[1] = "It's a failure";
+	std::cout << randOut[rand() % 2] << std::endl;
 }
 
 void		RobotomyRequestForm::execute(Bureaucrat const &excutor) const
 {
-	if (this->getSigned())
-		throw Form::FormIsSignedException();
-	else if (excutor.getGrade() > this->getGradeToExecute())
-		throw Form::GradeTooLowException();
-	beSigned(excutor);
+	Form::execute(excutor);
+	Action(excutor.getName());
 }
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

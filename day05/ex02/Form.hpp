@@ -28,7 +28,7 @@ class Form
 		int				getGradeToExecute() const;
 
 		// MEMBER FUNCTIONS
-		void	beSigned(Bureaucrat bureaucrat) const;
+		virtual void	beSigned(Bureaucrat const &bureaucrat);
 		virtual void	execute(Bureaucrat const &excutor) const = 0;
 
 	class GradeTooHighException : public std::exception

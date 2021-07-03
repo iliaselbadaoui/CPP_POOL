@@ -26,29 +26,24 @@ PresidentialPardonForm::~PresidentialPardonForm()
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
-void	PresidentialPardonForm::beSigned(Bureaucrat const &bureaucrat) const
+void	PresidentialPardonForm::beSigned(Bureaucrat const &bureaucrat)
 {
-	bureaucrat.signForm((Form *)this);
-	if (bureaucrat.getGrade() > this->getGradeToSign())
-		throw Form::GradeTooLowException();
+	Form::beSigned(bureaucrat);
 }
 
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void		PresidentialPardonForm::Action(std::string exec_name)
+void		PresidentialPardonForm::Action(std::string exec_name) const
 {
 	std::cout << exec_name << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }
 
 void		PresidentialPardonForm::execute(Bureaucrat const &excutor) const
 {
-	if (this->getSigned())
-		throw Form::FormIsSignedException();
-	else if (excutor.getGrade() > this->getGradeToExecute())
-		throw Form::GradeTooLowException();
-	beSigned(excutor);
+	Form::execute(excutor);
+	Action(excutor.getName());
 }
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

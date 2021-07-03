@@ -7,6 +7,7 @@ int main()
 		Form form("CrazyForm", 7, 3);
 		Bureaucrat bureaucrat("Square", 4);
 
+		std::cout << form << std::endl;
 		try
 		{
 			form.beSigned(bureaucrat);

@@ -54,11 +54,23 @@ std::ostream &			operator<<( std::ostream & o, Form const & i )
 
 void		Form::execute(Bureaucrat const &excutor) const
 {
-	if (this->getSigned())
-		throw Form::FormIsSignedException();
-	else if (excutor.getGrade() > this->gradeToExecute)
+	if (excutor.getGrade() > this->gradeToExecute)
 		throw Form::GradeTooLowException();
-	beSigned(excutor);
+}
+
+void	Form::beSigned(Bureaucrat const &bureaucrat)
+{
+	if (this->getSigned())
+	{
+		throw Form::FormIsSignedException();
+		return ;
+	}
+	else if (bureaucrat.getGrade() > this->getGradeToSign())
+	{
+		throw Form::GradeTooLowException();
+		return ;
+	}
+	this->_signed = true;
 }
 
 /*

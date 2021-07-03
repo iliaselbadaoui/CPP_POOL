@@ -14,9 +14,9 @@ class PresidentialPardonForm : public Form
 		virtual ~PresidentialPardonForm();
 
 
-		virtual void	beSigned(Bureaucrat const &bureaucrat) const;
+		virtual void	beSigned(Bureaucrat const &bureaucrat);
 		virtual void	execute(Bureaucrat const &excutor) const;
-		void	Action(std::string exec_name);
+		void	Action(std::string  exec_name) const;
 		
 		PresidentialPardonForm &		operator=( PresidentialPardonForm const & rhs );
 

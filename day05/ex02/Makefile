@@ -8,6 +8,7 @@ $(Name):
 	@$(compile) $(src) -o $(Name)
 clean:
 	@rm -rf $(Name)
+	@rm -rf *_shrubbery
 fclean: clean
 
 re: fclean all
