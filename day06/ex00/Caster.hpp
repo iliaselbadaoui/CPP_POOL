@@ -3,6 +3,8 @@
 # include <iostream>
 # include <string>
 # include <exception>
+# include <limits>
+# include <iomanip>
 class Caster
 {
 
@@ -13,10 +15,10 @@ class Caster
 		Caster(std::string const &value);
 		Caster( Caster const & src );
 		~Caster();
-		char	toChar();
-		int		toInt();
-		float	toFloat();
-		double	toDouble();
+		void	toChar();
+		void	toInt();
+		void	toFloat();
+		void	toDouble();
 		std::string		const &getValue() const;
 
 		Caster &		operator=( Caster const & rhs );
@@ -24,10 +26,7 @@ class Caster
 		class	ValueIsEmptyException: public std::exception
 		{
 			public :
-				const char* what() const throw()
-				{
-					return "Grade is to high";
-				};
+				const char* what() const throw();
 		};
 
 };
