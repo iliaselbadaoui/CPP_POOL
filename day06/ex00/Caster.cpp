@@ -122,14 +122,14 @@ void	Caster::toFloat()
 	try
 	{
 		container = std::stof(this->value);
-		std::cout << static_cast<float> (container);
+		std::cout << container;
 		std::cout << "f";
 	}
 	catch(const std::exception& e)
 	{
 		if (value[0] >= -127 && value[0] <= 127 && value.length() == 1)
 		{
-			container = static_cast<float>((this->value[0]));
+			container = this->value[0];
 			std::cout << container << "f";
 		}
 		else
