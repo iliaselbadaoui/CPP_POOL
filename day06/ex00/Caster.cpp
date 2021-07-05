@@ -50,23 +50,6 @@ std::ostream &			operator<<( std::ostream & o, Caster const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-bool is_number(std::string value)
-{
-	char *str = (char *)value.c_str();
-	if (str[0] == '-' || str[0] == '+')
-		str++;
-	while (*str)
-	{
-		if (*str <= '9' && *str >= '0')
-			str++;
-		else
-			break ;
-	}
-	if (*str == 'f' && *(str + 1) == 0)
-		return true;
-	return false;
-}
-
 void	Caster::toChar()
 {
 	double		container;
@@ -87,8 +70,8 @@ void	Caster::toChar()
 	}
 	catch(const std::exception& e)
 	{
-		if (value.c_str()[0] >= 32 && value.c_str()[0] <= 127 && value.length() == 1)
-			std::cout << "'" << static_cast<char>((this->value.c_str()[0])) << "'";
+		if (value[0] >= 32 && value[0] <= 127 && value.length() == 1)
+			std::cout << "'" << static_cast<char>((this->value[0])) << "'";
 		else
 			std::cout << "impossible";
 		// std::cerr << e.what() << '\n';
@@ -112,9 +95,9 @@ void	Caster::toInt()
 	}
 	catch(const std::exception& e)
 	{
-		if (value.c_str()[0] >= 32 && value.c_str()[0] <= 127 && value.length() == 1)
+		if (value[0] >= 32 && value[0] <= 127 && value.length() == 1)
 		{
-			std::cout << static_cast<int>((this->value.c_str()[0]));
+			std::cout << static_cast<int>((this->value[0]));
 		}
 		else
 		{
@@ -144,7 +127,7 @@ void	Caster::toFloat()
 	}
 	catch(const std::exception& e)
 	{
-		if (value.c_str()[0] >= -127 && value.c_str()[0] <= 127 && value.length() == 1)
+		if (value[0] >= -127 && value[0] <= 127 && value.length() == 1)
 		{
 			container = static_cast<float>((this->value[0]));
 			std::cout << container << "f";
@@ -175,9 +158,9 @@ void	Caster::toDouble()
 	}
 	catch(const std::exception& e)
 	{
-		if (value.c_str()[0] >= -127 && value.c_str()[0] <= 127 && value.length() == 1)
+		if (value[0] >= -127 && value[0] <= 127 && value.length() == 1)
 		{
-			container = static_cast<double>((this->value.c_str()[0]));
+			container = static_cast<double>((this->value[0]));
 			std::cout << container;
 		}
 		else
