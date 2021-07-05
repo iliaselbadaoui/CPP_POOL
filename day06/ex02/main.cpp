@@ -23,6 +23,8 @@ void identify(Base* p)
 		std::cout << "B" << std::endl;
 	else if ((c = dynamic_cast<C *>(p)))
 		std::cout << "C" << std::endl;
+	else
+		std::cout << "Undefined type";
 }
 void identify(Base &p)
 {
@@ -42,9 +44,17 @@ void identify(Base &p)
 		}
 		catch(const std::exception& e)
 		{
-			C &a = dynamic_cast<C &>(p);
-			(void) a;
-			std::cout << "C" << std::endl;
+			try
+			{
+				C &a = dynamic_cast<C &>(p);
+				(void) a;
+				std::cout << "C" << std::endl;
+			}
+			catch(const std::exception& e)
+			{
+				std::cout << "Undefined type";
+			}
+			
 		}
 	}
 }
