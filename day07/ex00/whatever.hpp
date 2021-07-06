@@ -1,4 +1,6 @@
 #pragma once
+# include <iostream>
+
 
 template <class Type>
 void    swap(Type &a, Type &b)
