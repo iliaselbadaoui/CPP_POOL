@@ -2,6 +2,7 @@
 
 # include <iostream>
 # include <vector>
+# include <limits>
 
 class span
 {
@@ -50,7 +51,13 @@ void	span::addNumber(int const n)
 
 int	span::shortestSpan(void) const
 {
-	//fill
+	int min = std::numeric_limits<int>::max();
+	for (size_t i = 0; i < this->vec.size(); i++)
+	{
+		if (vec[i] < min)
+			min = vec[i];
+	}
+	
 }
 
 span::span(unsigned int N)
