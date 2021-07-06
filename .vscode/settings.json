@@ -69,6 +69,7 @@
 		"mutex": "cpp",
 		"ratio": "cpp",
 		"stack": "cpp",
-		"base.hpp": "c"
+		"base.hpp": "c",
+		"filesystem": "cpp"
 	}
 }
