@@ -8,10 +8,8 @@
 class Span
 {
 	private:
-		Span();
 		std::vector<int>	vec;
 		unsigned int		size;
-		Span &		operator=( Span const & rhs );
 
 	public:
 		Span(unsigned int N);
@@ -20,7 +18,18 @@ class Span
 		int		longestSpan(void);
 		int		shortestSpan(void);
 
-	
+		template <typename T>
+		void	addRange(T start, T end)
+		{
+			if ((unsigned int)(std::distance(start, end)) > this->size - this->vec.size())
+					throw Span::SpanIsFullException();
+			while (start != end)
+			{
+				vec.push_back(*start);
+				++start;
+			}
+		};
+
 	class SpanIsFullException : public std::exception
 	{
 		public :
@@ -32,5 +41,3 @@ class Span
 			const char *what() const throw();
 	};
 };
-
-std::ostream &			operator<<( std::ostream & o, Span const & i );

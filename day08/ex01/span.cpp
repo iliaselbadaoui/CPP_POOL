@@ -22,7 +22,7 @@ const char *Span::NoSpanFoundException::what() const throw()
 
 void	Span::addNumber(int const n)
 {
-	if (vec.size() <= this->size)
+	if (vec.size() < this->size)
 	{
 		vec.push_back(n);
 		return ;

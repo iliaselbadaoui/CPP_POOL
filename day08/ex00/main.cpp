@@ -11,10 +11,18 @@ int main()
         vec.push_back(i+1);
     }
     
-    if (easyfind(vec, 4))
-        std::cout << "Found" << std::endl;
-    else
-        std::cout << "Not found" << std::endl;
+    std::cout << "Found : " << easyfind(vec, 4) << std::endl;
+
+    try
+    {
+        easyfind(vec, 9);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
+    
 
     return 0;
 }

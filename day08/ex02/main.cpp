@@ -2,6 +2,7 @@
 
 int main()
 {
+    std::cout << "SUBJECT'S MAIN" << std::endl;
     MutantStack<int> mstack;
     mstack.push(5);
     mstack.push(17);
@@ -15,6 +16,7 @@ int main()
     mstack.push(0);
     MutantStack<int>::iterator it = mstack.begin();
     MutantStack<int>::iterator ite = mstack.end();
+    std::cout << "Main's iterator test" << std::endl;
     ++it;
     --it;
     while (it != ite)
@@ -23,5 +25,19 @@ int main()
     ++it;
     }
     std::stack<int> s(mstack);
+
+
+
+    std::cout << "MY EXTENSION REV_ITER" << std::endl;
+    MutantStack<int>::reverse_iterator rit = mstack.rbegin();
+    MutantStack<int>::reverse_iterator rite = mstack.rend();
+    // ++rit;
+    // --rit;
+    while (rit != rite)
+    {
+        std::cout << *rit << std::endl;
+        ++rit;
+    }
+
     return 0;
 }
