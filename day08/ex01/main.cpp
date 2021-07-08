@@ -5,11 +5,11 @@ int main()
 {
 
     std::cout << "SUBJECT'S MAIN" << std::endl;
-    Span sp = Span(1000);
+    Span sp = Span(10000);
 
     srand(time(NULL));
     
-    for (int i = 0; i < 1000; i++)
+    for (int i = 0; i < 10000; i++)
     {
         sp.addNumber(rand());
     }
@@ -21,22 +21,25 @@ int main()
 
     std::vector<int> vec;
 
-    for (size_t i = 0; i < 1000; i++)
-    {
-        vec.push_back(rand());
-    }
-    
+    vec.push_back(4);
+    vec.push_back(-5);
+    vec.push_back(121);
+    vec.push_back(42);
+    vec.push_back(0);
+    vec.push_back(5000);
+    vec.push_back(4999);
+    vec.push_back(-5000);
+    vec.push_back(11);
+
     std::vector<int>::iterator start = vec.begin();
     std::vector<int>::iterator end = vec.end();
 
-    Span    range(1000);
+    Span    range(10000);
 
     range.addRange(start, end);
 
     std::cout << range.shortestSpan() << std::endl;
     std::cout << range.longestSpan() << std::endl;
-
-
 
     try
     {

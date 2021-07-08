@@ -32,24 +32,39 @@ void	Span::addNumber(int const n)
 
 int	Span::shortestSpan(void)
 {
-    std::sort(this->vec.begin(), this->vec.end());
-
     if (vec.size() > 1)
     {
-        return ((int)vec.at(1) - (int)vec.at(0));
+        std::sort(this->vec.begin(), this->vec.end());
+        int     min = std::numeric_limits<int>::max();
+        for (size_t i = 0; i < vec.size() - 1; i++)
+        {
+            for (size_t j = i + 1; j < vec.size(); j++)
+            {
+                if (vec.at(j) - vec.at(i) < min)
+                    min = vec.at(j) - vec.at(i);
+            }
+        }
+        return min;
     }
     throw Span::NoSpanFoundException();
     return 0;
 }
 
-
 int	Span::longestSpan(void)
 {
-	std::sort(this->vec.begin(), this->vec.end());
-
     if (vec.size() > 1)
     {
-        return ((int)vec.at(vec.size() - 1) - (int)vec.at(0));
+        std::sort(this->vec.begin(), this->vec.end());
+        int     max = std::numeric_limits<int>::min();
+        for (size_t i = 0; i < vec.size() - 1; i++)
+        {
+            for (size_t j = i + 1; j < vec.size(); j++)
+            {
+                if (vec.at(j) - vec.at(i) > max)
+                    max = vec.at(j) - vec.at(i);
+            }
+        }
+        return max;
     }
     throw Span::NoSpanFoundException();
     return 0;

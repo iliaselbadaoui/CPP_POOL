@@ -21,7 +21,7 @@ class Span
 		template <typename T>
 		void	addRange(T start, T end)
 		{
-			if ((unsigned int)(std::distance(start, end)) > this->size - this->vec.size())
+			if ((unsigned int)(end - start) > this->size - this->vec.size())
 					throw Span::SpanIsFullException();
 			while (start != end)
 			{
